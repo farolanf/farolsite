@@ -1,13 +1,9 @@
 import { defineConfig } from 'windicss/helpers'
 
 export default defineConfig({
-  theme: {
-    fontFamily: {
-      inconsolata: ['inconsolata'],
-    },
-  },
+  preflight: false,
   shortcuts: {
-    'container-ext': 'mx-auto px-15px lg:px-0',
+    'container-ext': 'mx-auto px-20px',
   },
   extract: {
     include: ['src/**/*.{js,ts,jsx,tsx,astro}'],

@@ -1,0 +1,13 @@
+---
+export interface Props {
+	title: string;
+	iconSrc: string;
+	href: string;
+}
+
+const { title, iconSrc, href } = Astro.props;
+---
+
+<a href={href} class="flex items-center md:justify-center py-10px px-30px min-w-160px max-w-200px hover:(no-underline bg-gray-100) rounded-md">
+	<img src={iconSrc} class="w-30px -ml-5px mr-5px" /> {title}
+</a>

@@ -15,8 +15,11 @@
   "devDependencies": {
     "@astrojs/solid-js": "^1.1.0",
     "@astrojs/tailwind": "^1.0.0",
+    "@types/typography": "^0.16.4",
     "sass": "^1.54.8",
     "solid-js": "^1.5.4",
+    "typography": "^0.16.21",
+    "typography-theme-sutro": "^0.16.19",
     "vite-plugin-pwa": "^0.12.7",
     "vite-plugin-windicss": "^1.8.7",
     "windicss": "^3.5.6"
