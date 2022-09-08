@@ -3,6 +3,7 @@ export interface Props {
 	title: string;
 }
 
+import '../styles.scss'
 import 'virtual:windi.css'
 
 const { title } = Astro.props;
@@ -17,18 +18,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="m-0 min-h-100vh font-inconsolata text-22px">
 		<slot />
 	</body>
 </html>
-
-<style lang="scss">
-	@import "../styles.scss";
-	html {
-		@include inconsolata;
-	}
-
-	body {
-		margin: 0;
-	}
-</style>

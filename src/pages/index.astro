@@ -1,12 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import githubIcon from '../assets/icons/github.svg';
+import linkedInIcon from '../assets/icons/linkedin.svg';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="h-100px leading-100px">
-		<h1 class="text-[#00ff00] text-center inline align-middle">Farolan Faisal</h1>
-		<span role="button" class="cursor-pointer py-10px px-20px bg-blue-500 text-white font-bold shadow-sm hover:shadow active:(select-none !shadow-inner)">Button</span>
+<Layout title="Farolan Faisal">
+	<main class="container container-ext min-h-[calc(100vh-160px)] pt-70px">
+		<h1 class="font-inconsolata text-46px sm:text-60px font-bold">Farolan Faisal</h1>
+		<p class="mt-20px">Hi! I'm a full stack engineer from Kalsel, Indonesia and I love making apps and websites. Check out my latest projects below.</p>
+		<ul class="mt-50px">
+			<li class="max-w-120px mx-auto">
+				<a href="https://github.com/farolanf" class="flex items-center">
+					<img src={githubIcon} class="w-30px -ml-7px !mr-2px" /> GitHub
+				</a>
+			</li>
+			<li class="max-w-120px mx-auto mt-15px">
+				<a href="https://www.linkedin.com/in/farolanfaisal" class="flex items-center">
+					<img src={linkedInIcon} class="w-27px -ml-5px !mr-3px" /> LinkedIn
+				</a>
+			</li>
+		</ul>
 	</main>
+	<footer class="mt-80px h-80px flex justify-center items-center">
+		Made with ❤️ by Farol
+	</footer>
 </Layout>
 
 <style>
