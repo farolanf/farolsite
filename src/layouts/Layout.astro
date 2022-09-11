@@ -9,7 +9,8 @@ import typographyTheme from 'typography-theme-sutro'
 
 const { title } = Astro.props;
 
-const typography = new Typography(typographyTheme)
+// fix theme import difference between dev and prod
+const typography = new Typography(typographyTheme?.default || typographyTheme)
 const typographyStyles = typography.toString()
 ---
 
