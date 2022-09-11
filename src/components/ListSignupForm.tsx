@@ -33,6 +33,7 @@ const ListSignupForm: Component = (_props) => {
   return (
     <div id="mc_embed_signup" class="relative">
       <form action="https://gmail.us14.list-manage.com/subscribe/post?u=503113fabc16bea8dced4fd97&amp;id=c119ae34af&amp;f_id=00ed96e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate onSubmit={handleSubmit}>
+        <input type="hidden" name="tags" value="12484270" />
         <div id="mc_embed_signup_scroll">
           <input 
             type="email" 
