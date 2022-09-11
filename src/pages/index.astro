@@ -3,31 +3,39 @@ import Layout from '../layouts/Layout.astro';
 import SocialButton from '../components/SocialButton.astro';
 import githubIcon from '../assets/icons/github.svg';
 import linkedInIcon from '../assets/icons/linkedin.svg';
+import ListSignupForm from '../components/ListSignupForm';
 ---
 
 <Layout title="Farolan Faisal">
 	<main class="container container-ext min-h-[calc(100vh-80px)] py-65px">
-		<h1 class="mt-0">Farolan Faisal</h1>
+		<h1 class="font-black mt-0">Farolan Faisal</h1>
 		<p>Hey! I'm a full stack engineer from Kalsel, Indonesia and I love making apps and websites.</p>
 		<p>It's a bit spacious at the moment as most of the projects I have worked on can't be disclosed here.</p>
-		<h2>Want to be notified when there's news and updates?</h2>
-		<a>Sign up for my newsletter.</a>
-		<ul class="list-none flex flex-col md:flex-row items-center mt-50px">
-			<li class="md:mr-10px">
-				<SocialButton
-					title="GitHub"
-					iconSrc={githubIcon}
-					href="https://github.com/farolanf"
-				/>
-			</li>
-			<li class="md:mr-10px">
-				<SocialButton
-					title="LinkedIn"
-					iconSrc={linkedInIcon}
-					href="https://www.linkedin.com/in/farolanfaisal"
-				/>
-			</li>
-		</ul>
+		
+		<section>
+			<h2 class="font-black">Want news and updates?</h2>
+			<p class="text-2xl font-bold text-green-600">Sign up for my newsletter.</p>
+			<ListSignupForm client:idle />
+		</section>
+
+		<section>
+			<ul class="list-none flex flex-row items-center mt-50px">
+				<li class="md:mr-10px">
+					<SocialButton
+						title="GitHub"
+						iconSrc={githubIcon}
+						href="https://github.com/farolanf"
+					/>
+				</li>
+				<li class="md:mr-10px">
+					<SocialButton
+						title="LinkedIn"
+						iconSrc={linkedInIcon}
+						href="https://www.linkedin.com/in/farolanfaisal"
+					/>
+				</li>
+			</ul>
+		</section>
 	</main>
 	<footer class="h-80px flex justify-center items-center">
 		Made with ❤️ by Farol
