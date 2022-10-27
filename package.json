@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "inline-styles": "node inline-styles.mjs"
   },
   "dependencies": {
     "astro": "^1.2.1"
@@ -16,6 +17,7 @@
     "@astrojs/solid-js": "^1.1.0",
     "@astrojs/tailwind": "^1.0.0",
     "@types/typography": "^0.16.4",
+    "globby": "^13.1.2",
     "sass": "^1.54.8",
     "solid-js": "^1.5.4",
     "typography": "^0.16.21",
