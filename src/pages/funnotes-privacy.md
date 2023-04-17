@@ -11,4 +11,4 @@ description: Privacy Policy of FunNotes
 
 We don't knowingly collect and share any of your information except that are stated below.
 
-We collect your selected google account name for server side purchase verification.
+We collect purchase tokens of FunNotes products for server side purchase verification.
