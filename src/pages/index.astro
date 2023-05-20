@@ -8,7 +8,7 @@ import funnotesImage from '../assets/funnotes.png';
 ---
 
 <Layout title="Farolan Faisal">
-	<main class="container container-ext min-h-[calc(100vh-80px)] py-65px">
+	<main id="root" class="container container-ext min-h-[calc(100vh-80px)] py-65px">
 		<h1 class="font-black mt-0">Farolan Faisal</h1>
 		<p>Hey! I'm a full stack engineer from Kalsel, Indonesia and I love making apps and websites.</p>
 		<p>It's a bit spacious at the moment as most of the projects I have worked on can't be disclosed here.</p>
@@ -17,7 +17,7 @@ import funnotesImage from '../assets/funnotes.png';
 
 		<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
 			<h3 class="mb-2">FunNotes - Customizable Note Taking App</h3>
-			<img src={funnotesImage} alt="FunNotes app" class="m-0" />
+			<img src={funnotesImage} alt="FunNotes app" class="m-0 funnotes-img" />
 		</a><br />
 		<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
 		<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
@@ -50,4 +50,48 @@ import funnotesImage from '../assets/funnotes.png';
 	<footer class="h-80px flex justify-center items-center">
 		Made with ❤️ by Farol
 	</footer>
+	<script>
+		window.onload = () => {
+			const MAX_T = 1000
+			const STEP = 100
+			const points: number[] = []
+			for (let i = STEP; i < MAX_T; i += STEP) {
+				points.push(i)
+			}
+			const el = document.getElementById('root')!
+			let t = 0
+			const onScroll = (e: WheelEvent) => {
+				t += e.deltaY
+				t = Math.max(0, Math.min(t, MAX_T))
+				points.forEach(p => {
+					const cls = `t-${p}`
+					if (t < p) el.classList.remove(cls)
+					else el.classList.add(cls)
+				})
+				el.style.transform = `translateY(-${t}px)`;
+			}
+			window.addEventListener('wheel', onScroll)
+		}
+	</script>
 </Layout>
+
+<style>
+	html, body {
+		overflow: hidden;
+	}
+
+	#root {
+		transition: all 1s ease-out;
+	}
+
+	.funnotes-img {
+		position: relative;
+		transition: all .8s ease-out;
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	.t-100 .funnotes-img {
+		opacity: 1;
+		transform: translateX(0);
+	}
+</style>
