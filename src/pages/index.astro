@@ -17,7 +17,7 @@ import funnotesImage from '../assets/funnotes.png';
 
 		<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
 			<h3 class="mb-2">FunNotes - Customizable Note Taking App</h3>
-			<img src={funnotesImage} alt="FunNotes app" class="m-0 funnotes-img" />
+			<img src={funnotesImage} alt="FunNotes app" class="m-0 funnotes-img shadow-lg" />
 		</a><br />
 		<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
 		<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
@@ -51,35 +51,36 @@ import funnotesImage from '../assets/funnotes.png';
 		Made with ❤️ by Farol
 	</footer>
 	<script>
-		window.onload = () => {
-			const MAX_T = 1000
-			const STEP = 100
-			const points: number[] = []
-			for (let i = STEP; i < MAX_T; i += STEP) {
-				points.push(i)
+		(function(){
+			const STEP = 5
+			const steps: number[] = []
+
+			for (let i = 0; i <= 100; i += STEP) {
+				steps.push(i)
 			}
-			const el = document.getElementById('root')!
-			let t = 0
-			const onScroll = (e: WheelEvent) => {
-				t += e.deltaY
-				t = Math.max(0, Math.min(t, MAX_T))
-				points.forEach(p => {
-					const cls = `t-${p}`
-					if (t < p) el.classList.remove(cls)
-					else el.classList.add(cls)
+
+			const scrollEl = document.documentElement
+			const clsEl = document.getElementById('root')!
+
+			function update() {
+				const maxY = scrollEl.scrollHeight - scrollEl.clientHeight
+				const t = window.scrollY / maxY * 100
+				steps.forEach(n => {
+					const cls = `t-${n}`
+					if (t < n) clsEl.classList.remove(cls)
+					else clsEl.classList.add(cls)
 				})
-				el.style.transform = `translateY(-${t}px)`;
 			}
-			window.addEventListener('wheel', onScroll)
-		}
+
+			window.onload = () => {
+				update()
+				window.addEventListener('scroll', update)
+			}
+		})()
 	</script>
 </Layout>
 
 <style>
-	html, body {
-		overflow: hidden;
-	}
-
 	#root {
 		transition: all 1s ease-out;
 	}
@@ -90,7 +91,7 @@ import funnotesImage from '../assets/funnotes.png';
 		opacity: 0;
 		transform: translateX(20px);
 	}
-	.t-100 .funnotes-img {
+	.t-5 .funnotes-img {
 		opacity: 1;
 		transform: translateX(0);
 	}
