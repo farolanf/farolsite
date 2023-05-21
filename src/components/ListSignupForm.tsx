@@ -50,7 +50,7 @@ const ListSignupForm: Component = (_props) => {
             name="EMAIL"
             id="mce-EMAIL"
             placeholder="Enter your email"
-            class="input w-280px"
+            class="input w-280px mr-10px"
             classList={{ 'opacity-50': loading() }}
             disabled={loading()}
             required
@@ -60,7 +60,7 @@ const ListSignupForm: Component = (_props) => {
             value="Subscribe"
             name="subscribe"
             id="mc-embedded-subscribe"
-            class="button bg-green-600 text-white font-bold ml-10px"
+            class="button bg-green-600 text-white font-bold mt-10px"
             classList={{ 'bg-gray-300': loading() }}
             disabled={loading()}
           />
