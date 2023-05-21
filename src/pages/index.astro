@@ -17,8 +17,11 @@ import filterMovieImage from '../assets/filtermovie.png';
 				<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
 				<p class="hey hey-3 text-4xl">and I love making apps and websites.</p>
 				<p class="hey hey-4 text-4xl">Thanks for checking out!</p>
-				<p class="name text-4xl">By the way, my name is Farolan</p>
 			</div>
+		</div>
+
+		<div class="container container-ext flex flex-col justify-center items-center">
+			<p class="name text-4xl">By the way, my name is Farolan</p>
 		</div>
 
 		<div class="projects-c">
@@ -139,7 +142,7 @@ import filterMovieImage from '../assets/filtermovie.png';
 			function hoverTilt(target: Element) {
 				const el = target as HTMLElement
 				const tilt = (tx: number, ty: number) => {
-					const deg = 10
+					const deg = 20
 					const xrot = tx * deg;
 					const yrot = ty * deg;
 					el.style.transform = `rotateX(${xrot}deg) rotateY(${yrot}deg)`
@@ -206,10 +209,6 @@ import filterMovieImage from '../assets/filtermovie.png';
 		}
 	}
 
-	.project-img {
-		max-width: 512px;
-		margin: 0;
-	}
 	.hey-c {
 		background: linear-gradient(180deg, #a7f3d0, transparent);
 	}
@@ -258,22 +257,25 @@ import filterMovieImage from '../assets/filtermovie.png';
 	.name {
 		transition: all 1s ease-out .2s;
 		opacity: 0;
-		transform: translateY(300%);
+		transform: translateY(-100px);
 	}
 	.t-25 .name {
 		opacity: 1;
-		transform: translateY(500%);
+		transform: translateY(-70px);
 	}
 	.t-50 .name {
 		opacity: 0;
-		transform: translateY(300%);
+		transform: translateY(-100px);
 	}
 
 	.project-img {
+		width: 512px;
+		max-width: calc(100vw - 40px);
 		position: relative;
 		transition: all .8s ease-out;
-		opacity: 0;
 		transform: translateX(20px);
+		opacity: 0;
+		margin: 0;
 	}
 	.project-img.enter {
 		opacity: 1;
