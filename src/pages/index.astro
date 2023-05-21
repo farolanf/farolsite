@@ -60,7 +60,7 @@ import funnotesImage from '../assets/funnotes.png';
 	</main>
 	<script>
 		(function(){
-			const STEP = 2
+			const STEP = 5
 			const steps: number[] = []
 
 			for (let i = 0; i <= 100; i += STEP) {
@@ -123,13 +123,25 @@ import funnotesImage from '../assets/funnotes.png';
 			transform: translateY(0);
 			opacity: 1;
 		}
-		.t-2 & {
+		.t-5 & {
 			transition: all 1s ease-out 0s;
 			opacity: 0;
 		}
-		.rt-2 & {
+		.rt-5 & {
 			transition-delay: 0s;
 		}
+	}
+	.t-5 .hey-1 {
+		transform: translateY(-50px);
+	}
+	.t-5 .hey-2 {
+		transform: translateX(-50px);
+	}
+	.t-5 .hey-3 {
+		transform: translateX(50px);
+	}
+	.t-5 .hey-4 {
+		transform: translateY(50px);
 	}
 	.name {
 		transition: all 1s ease-out .2s;
@@ -145,26 +157,13 @@ import funnotesImage from '../assets/funnotes.png';
 		transform: translateY(180px);
 	}
 
-	.t-2 .hey-1 {
-		transform: translateY(-50px);
-	}
-	.t-2 .hey-2 {
-		transform: translateX(-50px);
-	}
-	.t-2 .hey-3 {
-		transform: translateX(50px);
-	}
-	.t-2 .hey-4 {
-		transform: translateY(50px);
-	}
-
 	.funnotes-img {
 		position: relative;
 		transition: all .8s ease-out;
 		opacity: 0;
 		transform: translateX(20px);
 	}
-	.t-22 .funnotes-img {
+	.t-20 .funnotes-img {
 		opacity: 1;
 		transform: translateX(0);
 	}
