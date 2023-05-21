@@ -27,7 +27,9 @@ import filterMovieImage from '../assets/filtermovie.png';
 
 				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
 					<h3 class="mb-2 anim fade">FunNotes - Customizable Note Taking App</h3>
-					<img src={funnotesImage} alt="FunNotes app" class="m-0 anim project-img shadow-lg" />
+					<div class="tilt">
+						<img src={funnotesImage} alt="FunNotes app" class="m-0 anim project-img shadow-lg" />
+					</div>
 				</a><br />
 				<div class="anim fade">
 					<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
@@ -36,7 +38,9 @@ import filterMovieImage from '../assets/filtermovie.png';
 
 				<a href="https://url.gbits.me/" target="_blank" rel="noopener">
 					<h3 class="mb-2 anim fade">Urlbit - Free URL Shortener</h3>
-					<img src={urlbitImage} alt="Urlbit app" class="m-0 anim project-img shadow-lg" />
+					<div class="tilt">
+						<img src={urlbitImage} alt="Urlbit app" class="m-0 anim project-img shadow-lg" />
+					</div>
 				</a><br />
 				<div class="anim fade">
 					<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
@@ -45,7 +49,9 @@ import filterMovieImage from '../assets/filtermovie.png';
 
 				<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">
 					<h3 class="mb-2 anim fade">FilterMovie - Video Censoring Chrome Extension</h3>
-					<img src={filterMovieImage} alt="FilterMovie app" class="m-0 anim project-img shadow-lg" />
+					<div class="tilt">
+						<img src={filterMovieImage} alt="FilterMovie app" class="m-0 anim project-img shadow-lg" />
+					</div>
 				</a><br />
 				<div class="anim fade">
 					<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">Store</a>
@@ -133,24 +139,19 @@ import filterMovieImage from '../assets/filtermovie.png';
 			function hoverTilt(target: Element) {
 				const el = target as HTMLElement
 				const tilt = (tx: number, ty: number) => {
-					const deg = 15
-					let x = -ty
-					let y = tx
-					const len = Math.sqrt(x*x + y*y)
-					x /= len
-					y /= len
-					// console.log(x.toFixed(2), y.toFixed(2))
-					el.style.rotate = `${x} ${y} 0 ${deg}deg`
+					const deg = 10
+					const xrot = tx * deg;
+					const yrot = ty * deg;
+					el.style.transform = `rotateX(${xrot}deg) rotateY(${yrot}deg)`
 				}
-				el.addEventListener('mousemove', e => {
+				target.addEventListener('mousemove', e => {
 					const ev = e as MouseEvent
-					const cx = el.offsetWidth / 2
-					const cy = el.offsetHeight / 2
-					const tx = (ev.clientX - el.offsetLeft - cx) * 2 / el.offsetWidth
-					const ty = (ev.clientY - el.offsetTop - cy) * 2 / el.offsetHeight
-					// TODO: fix ty
-					console.log(tx, ty)
-					tilt(tx, -ty)
+					const rect = el.getBoundingClientRect()
+					const cx = rect.width / 2
+					const cy = rect.height / 2
+					const tx = (ev.clientX - rect.left - cx) / cx
+					const ty = (ev.clientY - rect.top - cy) / cy
+					tilt(-ty, tx)
 				})
 			}
 
@@ -158,7 +159,7 @@ import filterMovieImage from '../assets/filtermovie.png';
 				update()
 				scrollEl.addEventListener('scroll', update)
 				Array.from(document.getElementsByClassName('anim')).forEach(setupObserver)
-				Array.from(document.getElementsByClassName('project-img')).forEach(hoverTilt)
+				Array.from(document.getElementsByClassName('tilt')).forEach(hoverTilt)
 			}
 		})()
 	</script>
@@ -192,8 +193,22 @@ import filterMovieImage from '../assets/filtermovie.png';
 		}
 	}
 
+	.tilt {
+		transition: all .5s ease-out;
+		display: inline-block;
+		perspective: 1400px;
+		&:hover {
+			transition: scale .5s ease-out;
+			scale: 1.03;
+		}
+		&:not(:hover) {
+			transform: rotateX(0deg) rotateY(0deg) !important;
+		}
+	}
+
 	.project-img {
 		max-width: 512px;
+		margin: 0;
 	}
 	.hey-c {
 		background: linear-gradient(180deg, #a7f3d0, transparent);
