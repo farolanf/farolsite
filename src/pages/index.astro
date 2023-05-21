@@ -11,35 +11,43 @@ import urlbitImage from '../assets/urlbit.png';
 <Layout title="Farolan Faisal">
 	<main id="root" class="min-h-[calc(100vh-80px)]">
 		<div class="hey-c min-h-100vh flex flex-col justify-center items-center">
-			<p class="hey hey-1 text-4xl">Hello there!</p>
-			<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
-			<p class="hey hey-3 text-4xl">and I love making apps and websites.</p>
-			<p class="hey hey-4 text-4xl">Thanks for checking out!</p>
-			<p class="name text-4xl">By the way, my name is Farolan</p>
+			<div class="container container-ext flex flex-col justify-center items-center">
+				<p class="hey hey-1 text-4xl">Hello there!</p>
+				<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
+				<p class="hey hey-3 text-4xl">and I love making apps and websites.</p>
+				<p class="hey hey-4 text-4xl">Thanks for checking out!</p>
+				<p class="name text-4xl">By the way, my name is Farolan</p>
+			</div>
 		</div>
 
 		<div class="projects-c">
 			<div class="container container-ext">
-				<h2>Projects</h2>
+				<h2 class="anim fade fade-left">Projects</h2>
 
 				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
-					<h3 class="mb-2">FunNotes - Customizable Note Taking App</h3>
-					<img src={funnotesImage} alt="FunNotes app" class="m-0 project-img funnotes-img shadow-lg" />
+					<h3 class="mb-2 anim fade">FunNotes - Customizable Note Taking App</h3>
+					<img src={funnotesImage} alt="FunNotes app" class="m-0 anim project-img shadow-lg" />
 				</a><br />
-				<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
-				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
+				<div class="anim fade">
+					<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
+					<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
+				</div>
 
 				<a href="https://url.gbits.me/" target="_blank" rel="noopener">
-					<h3 class="mb-2">Urlbit - Free URL Shortener</h3>
-					<img src={urlbitImage} alt="Urlbit app" class="m-0 project-img urlbit-img shadow-lg" />
+					<h3 class="mb-2 anim fade">Urlbit - Free URL Shortener</h3>
+					<img src={urlbitImage} alt="Urlbit app" class="m-0 anim project-img shadow-lg" />
 				</a><br />
-				<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
-				<a href="https://play.google.com/store/apps/details?id=me.gbits.url.twa" target="_blank" rel="noopener">Store</a>
+				<div class="anim fade">
+					<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
+					<a href="https://play.google.com/store/apps/details?id=me.gbits.url.twa" target="_blank" rel="noopener">Store</a>
+				</div>
 
 				<section>
-					<h2 class="font-black">Want news and updates?</h2>
-					<p class="text-2xl font-bold text-green-600">Sign up for my newsletter.</p>
-					<ListSignupForm client:idle />
+					<h2 class="font-black anim fade fade-left">Want news and updates?</h2>
+					<p class="text-2xl font-bold text-green-600 anim fade fade-right">Sign up for my newsletter.</p>
+					<div class="anim fade fade-in">
+						<ListSignupForm client:idle />
+					</div>
 				</section>
 
 				<section>
@@ -75,37 +83,81 @@ import urlbitImage from '../assets/urlbit.png';
 				steps.push(i)
 			}
 
-			const scrollEl = document.documentElement
-			const clsEl = document.getElementById('root')!
+			const scrollEl = document.body
+			const root = document.getElementById('root')!
 			let prevT = 0
 
 			function update() {
 				const maxY = scrollEl.scrollHeight - scrollEl.clientHeight
-				const t = window.scrollY / maxY * 100
+				const t = scrollEl.scrollTop / maxY * 100
 				steps.forEach(n => {
 					const cls = `t-${n}`
 					const rcls = `rt-${n}`
 					if (t < n) {
-						clsEl.classList.remove(cls)
-						if (prevT > n) clsEl.classList.add(rcls)
+						root.classList.remove(cls)
+						if (prevT > n) root.classList.add(rcls)
 					}
 					else {
-						clsEl.classList.add(cls)
-						clsEl.classList.remove(rcls)
+						root.classList.add(cls)
+						root.classList.remove(rcls)
 					}
 				})
 				prevT = t
 			}
 
+			function setupObserver(target: Element) {
+				const observer = new IntersectionObserver(entries => {
+					Array.from(entries.values()).forEach(e => {
+						const el = e.target
+						if (e.isIntersecting) {
+							el.classList.add('enter')
+							el.classList.remove('exit')
+						} else if (el.classList.contains('enter')) {
+							el.classList.remove('enter')
+							el.classList.add('exit')
+						}
+					})
+				}, { root: scrollEl, threshold: [0.1]})
+				observer.observe(target)
+			}
+
 			window.onload = () => {
 				update()
-				window.addEventListener('scroll', update)
+				scrollEl.addEventListener('scroll', update)
+				Array.from(document.getElementsByClassName('anim')).forEach(setupObserver)
 			}
 		})()
 	</script>
 </Layout>
 
 <style lang="scss">
+	html {
+		overflow: hidden;
+	}
+	body {
+		height: 100vh;
+		overflow: auto;
+	}
+	
+	.fade {
+		transition: all 1s ease-out 0s;
+		opacity: 0;
+		transform: translateY(-20px);
+		&.fade-left {
+			transform: translateX(-50px);
+		}
+		&.fade-right {
+			transform: translateX(50px);
+		}
+		&.fade-in {
+			transform: translateX(0px);
+		}
+		&.enter {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+
 	.project-img {
 		max-width: 512px;
 	}
@@ -159,22 +211,22 @@ import urlbitImage from '../assets/urlbit.png';
 		opacity: 0;
 		transform: translateY(120px);
 	}
-	.t-50 .name {
+	.t-40 .name {
 		opacity: 1;
 		transform: translateY(200px);
 	}
-	.t-80 .name {
+	.t-55 .name {
 		opacity: 0;
 		transform: translateY(180px);
 	}
 
-	.funnotes-img {
+	.project-img {
 		position: relative;
 		transition: all .8s ease-out;
 		opacity: 0;
 		transform: translateX(20px);
 	}
-	.t-20 .funnotes-img {
+	.project-img.enter {
 		opacity: 1;
 		transform: translateX(0);
 	}
