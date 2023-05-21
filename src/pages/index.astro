@@ -6,6 +6,7 @@ import linkedInIcon from '../assets/icons/linkedin.svg';
 import ListSignupForm from '../components/ListSignupForm';
 import funnotesImage from '../assets/funnotes.png';
 import urlbitImage from '../assets/urlbit.png';
+import filterMovieImage from '../assets/filtermovie.png';
 ---
 
 <Layout title="Farolan Faisal">
@@ -40,6 +41,14 @@ import urlbitImage from '../assets/urlbit.png';
 				<div class="anim fade">
 					<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
 					<a href="https://play.google.com/store/apps/details?id=me.gbits.url.twa" target="_blank" rel="noopener">Store</a>
+				</div>
+
+				<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">
+					<h3 class="mb-2 anim fade">FilterMovie - Video Censoring Chrome Extension</h3>
+					<img src={filterMovieImage} alt="FilterMovie app" class="m-0 anim project-img shadow-lg" />
+				</a><br />
+				<div class="anim fade">
+					<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">Store</a>
 				</div>
 
 				<section>
@@ -121,10 +130,35 @@ import urlbitImage from '../assets/urlbit.png';
 				observer.observe(target)
 			}
 
+			function hoverTilt(target: Element) {
+				const el = target as HTMLElement
+				const tilt = (tx: number, ty: number) => {
+					const deg = 15
+					let x = -ty
+					let y = tx
+					const len = Math.sqrt(x*x + y*y)
+					x /= len
+					y /= len
+					// console.log(x.toFixed(2), y.toFixed(2))
+					el.style.rotate = `${x} ${y} 0 ${deg}deg`
+				}
+				el.addEventListener('mousemove', e => {
+					const ev = e as MouseEvent
+					const cx = el.offsetWidth / 2
+					const cy = el.offsetHeight / 2
+					const tx = (ev.clientX - el.offsetLeft - cx) * 2 / el.offsetWidth
+					const ty = (ev.clientY - el.offsetTop - cy) * 2 / el.offsetHeight
+					// TODO: fix ty
+					console.log(tx, ty)
+					tilt(tx, -ty)
+				})
+			}
+
 			window.onload = () => {
 				update()
 				scrollEl.addEventListener('scroll', update)
 				Array.from(document.getElementsByClassName('anim')).forEach(setupObserver)
+				Array.from(document.getElementsByClassName('project-img')).forEach(hoverTilt)
 			}
 		})()
 	</script>
@@ -209,15 +243,15 @@ import urlbitImage from '../assets/urlbit.png';
 	.name {
 		transition: all 1s ease-out .2s;
 		opacity: 0;
-		transform: translateY(120px);
+		transform: translateY(300%);
 	}
-	.t-40 .name {
+	.t-25 .name {
 		opacity: 1;
-		transform: translateY(200px);
+		transform: translateY(500%);
 	}
-	.t-55 .name {
+	.t-50 .name {
 		opacity: 0;
-		transform: translateY(180px);
+		transform: translateY(300%);
 	}
 
 	.project-img {
