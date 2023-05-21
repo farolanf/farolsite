@@ -8,7 +8,13 @@ import funnotesImage from '../assets/funnotes.png';
 ---
 
 <Layout title="Farolan Faisal">
-	<main id="root" class="container container-ext min-h-[calc(100vh-80px)] py-65px">
+	<main id="root" class="container container-ext min-h-[calc(100vh-80px)]">
+		<div class="min-h-100vh flex flex-col justify-center items-center">
+			<p class="hey hey-1 text-4xl">Hello there!</p>
+			<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
+			<p class="hey hey-3 text-4xl">and I love making apps and websites.</p>
+			<p class="hey hey-4 text-4xl">Thanks for checking out!</p>
+		</div>
 		<h1 class="font-black mt-0">Farolan Faisal</h1>
 		<p>Hey! I'm a full stack engineer from Kalsel, Indonesia and I love making apps and websites.</p>
 		<p>It's a bit spacious at the moment as most of the projects I have worked on can't be disclosed here.</p>
@@ -52,7 +58,7 @@ import funnotesImage from '../assets/funnotes.png';
 	</footer>
 	<script>
 		(function(){
-			const STEP = 5
+			const STEP = 2
 			const steps: number[] = []
 
 			for (let i = 0; i <= 100; i += STEP) {
@@ -61,15 +67,24 @@ import funnotesImage from '../assets/funnotes.png';
 
 			const scrollEl = document.documentElement
 			const clsEl = document.getElementById('root')!
+			let prevT = 0
 
 			function update() {
 				const maxY = scrollEl.scrollHeight - scrollEl.clientHeight
 				const t = window.scrollY / maxY * 100
 				steps.forEach(n => {
 					const cls = `t-${n}`
-					if (t < n) clsEl.classList.remove(cls)
-					else clsEl.classList.add(cls)
+					const rcls = `rt-${n}`
+					if (t < n) {
+						clsEl.classList.remove(cls)
+						if (prevT > n) clsEl.classList.add(rcls)
+					}
+					else {
+						clsEl.classList.add(cls)
+						clsEl.classList.remove(rcls)
+					}
 				})
+				prevT = t
 			}
 
 			window.onload = () => {
@@ -80,9 +95,46 @@ import funnotesImage from '../assets/funnotes.png';
 	</script>
 </Layout>
 
-<style>
-	#root {
-		transition: all 1s ease-out;
+<style lang="scss">
+	.hey {
+		transition: all 1s ease-out .2s;
+		opacity: 0;
+		transform: translateY(-20px);
+		
+		&.hey-2 {
+			transition-delay: 1.2s;
+		}
+		&.hey-3 {
+			transition-delay: 2.2s;
+		}
+		&.hey-4 {
+			transition-delay: 3.2s;
+		}
+
+		.t-0 & {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		.t-2 & {
+			transition: all 1s ease-out 0s;
+			opacity: 0;
+		}
+		.rt-2 & {
+			transition-delay: 0s;
+		}
+	}
+
+	.t-2 .hey-1 {
+		transform: translateY(-50px);
+	}
+	.t-2 .hey-2 {
+		transform: translateX(-50px);
+	}
+	.t-2 .hey-3 {
+		transform: translateX(50px);
+	}
+	.t-2 .hey-4 {
+		transform: translateY(50px);
 	}
 
 	.funnotes-img {
@@ -91,7 +143,7 @@ import funnotesImage from '../assets/funnotes.png';
 		opacity: 0;
 		transform: translateX(20px);
 	}
-	.t-5 .funnotes-img {
+	.t-40 .funnotes-img {
 		opacity: 1;
 		transform: translateX(0);
 	}
