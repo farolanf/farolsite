@@ -5,6 +5,7 @@ import githubIcon from '../assets/icons/github.svg';
 import linkedInIcon from '../assets/icons/linkedin.svg';
 import ListSignupForm from '../components/ListSignupForm';
 import funnotesImage from '../assets/funnotes.png';
+import urlbitImage from '../assets/urlbit.png';
 ---
 
 <Layout title="Farolan Faisal">
@@ -23,11 +24,18 @@ import funnotesImage from '../assets/funnotes.png';
 
 				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
 					<h3 class="mb-2">FunNotes - Customizable Note Taking App</h3>
-					<img src={funnotesImage} alt="FunNotes app" class="m-0 funnotes-img shadow-lg" />
+					<img src={funnotesImage} alt="FunNotes app" class="m-0 project-img funnotes-img shadow-lg" />
 				</a><br />
 				<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
 				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
-				
+
+				<a href="https://url.gbits.me/" target="_blank" rel="noopener">
+					<h3 class="mb-2">Urlbit - Free URL Shortener</h3>
+					<img src={urlbitImage} alt="Urlbit app" class="m-0 project-img urlbit-img shadow-lg" />
+				</a><br />
+				<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
+				<a href="https://play.google.com/store/apps/details?id=me.gbits.url.twa" target="_blank" rel="noopener">Store</a>
+
 				<section>
 					<h2 class="font-black">Want news and updates?</h2>
 					<p class="text-2xl font-bold text-green-600">Sign up for my newsletter.</p>
@@ -98,6 +106,9 @@ import funnotesImage from '../assets/funnotes.png';
 </Layout>
 
 <style lang="scss">
+	.project-img {
+		max-width: 512px;
+	}
 	.hey-c {
 		background: linear-gradient(180deg, #a7f3d0, transparent);
 	}
