@@ -8,54 +8,56 @@ import funnotesImage from '../assets/funnotes.png';
 ---
 
 <Layout title="Farolan Faisal">
-	<main id="root" class="container container-ext min-h-[calc(100vh-80px)]">
-		<div class="min-h-100vh flex flex-col justify-center items-center">
+	<main id="root" class="min-h-[calc(100vh-80px)]">
+		<div class="hey-c min-h-100vh flex flex-col justify-center items-center">
 			<p class="hey hey-1 text-4xl">Hello there!</p>
 			<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
 			<p class="hey hey-3 text-4xl">and I love making apps and websites.</p>
 			<p class="hey hey-4 text-4xl">Thanks for checking out!</p>
+			<p class="name text-4xl">By the way, my name is Farolan</p>
 		</div>
-		<h1 class="font-black mt-0">Farolan Faisal</h1>
-		<p>Hey! I'm a full stack engineer from Kalsel, Indonesia and I love making apps and websites.</p>
-		<p>It's a bit spacious at the moment as most of the projects I have worked on can't be disclosed here.</p>
 
-		<h2>Projects</h2>
+		<div class="projects-c">
+			<div class="container container-ext">
+				<h2>Projects</h2>
 
-		<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
-			<h3 class="mb-2">FunNotes - Customizable Note Taking App</h3>
-			<img src={funnotesImage} alt="FunNotes app" class="m-0 funnotes-img shadow-lg" />
-		</a><br />
-		<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
-		<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
-		
-		<section>
-			<h2 class="font-black">Want news and updates?</h2>
-			<p class="text-2xl font-bold text-green-600">Sign up for my newsletter.</p>
-			<ListSignupForm client:idle />
-		</section>
+				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
+					<h3 class="mb-2">FunNotes - Customizable Note Taking App</h3>
+					<img src={funnotesImage} alt="FunNotes app" class="m-0 funnotes-img shadow-lg" />
+				</a><br />
+				<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
+				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
+				
+				<section>
+					<h2 class="font-black">Want news and updates?</h2>
+					<p class="text-2xl font-bold text-green-600">Sign up for my newsletter.</p>
+					<ListSignupForm client:idle />
+				</section>
 
-		<section>
-			<ul class="list-none flex flex-row items-center mt-50px">
-				<li class="md:mr-10px">
-					<SocialButton
-						title="GitHub"
-						iconSrc={githubIcon}
-						href="https://github.com/farolanf"
-					/>
-				</li>
-				<li class="md:mr-10px">
-					<SocialButton
-						title="LinkedIn"
-						iconSrc={linkedInIcon}
-						href="https://www.linkedin.com/in/farolanfaisal"
-					/>
-				</li>
-			</ul>
-		</section>
+				<section>
+					<ul class="list-none flex flex-row items-center mt-50px">
+						<li class="md:mr-10px">
+							<SocialButton
+								title="GitHub"
+								iconSrc={githubIcon}
+								href="https://github.com/farolanf"
+							/>
+						</li>
+						<li class="md:mr-10px">
+							<SocialButton
+								title="LinkedIn"
+								iconSrc={linkedInIcon}
+								href="https://www.linkedin.com/in/farolanfaisal"
+							/>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<footer class="h-80px flex justify-center items-center">
+				Built from scratch with <span class="heart">❤️</span> by Farol
+			</footer>
+		</div>
 	</main>
-	<footer class="h-80px flex justify-center items-center">
-		Made with ❤️ by Farol
-	</footer>
 	<script>
 		(function(){
 			const STEP = 2
@@ -96,6 +98,12 @@ import funnotesImage from '../assets/funnotes.png';
 </Layout>
 
 <style lang="scss">
+	.hey-c {
+		background: linear-gradient(180deg, #a7f3d0, transparent);
+	}
+	.projects-c {
+		background: linear-gradient(180deg, transparent, #e5e7eb);
+	}
 	.hey {
 		transition: all 1s ease-out .2s;
 		opacity: 0;
@@ -123,6 +131,19 @@ import funnotesImage from '../assets/funnotes.png';
 			transition-delay: 0s;
 		}
 	}
+	.name {
+		transition: all 1s ease-out .2s;
+		opacity: 0;
+		transform: translateY(120px);
+	}
+	.t-50 .name {
+		opacity: 1;
+		transform: translateY(200px);
+	}
+	.t-80 .name {
+		opacity: 0;
+		transform: translateY(180px);
+	}
 
 	.t-2 .hey-1 {
 		transform: translateY(-50px);
@@ -143,8 +164,18 @@ import funnotesImage from '../assets/funnotes.png';
 		opacity: 0;
 		transform: translateX(20px);
 	}
-	.t-40 .funnotes-img {
+	.t-22 .funnotes-img {
 		opacity: 1;
 		transform: translateX(0);
+	}
+
+	.heart {
+		transition: all 1s ease-out;
+		opacity: 0;
+		transform: scale(2);
+	}
+	.t-100 .heart {
+		opacity: 1;
+		transform: scale(1);
 	}
 </style>
