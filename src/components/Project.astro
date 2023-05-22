@@ -1,0 +1,36 @@
+---
+export interface Props {
+	title: string;
+	image: string;
+	href: string;
+}
+
+const { title, image, href } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener">
+	<h3 class="mb-2 anim fade">{title}</h3>
+	<img src={image} alt={title} class="m-0 anim project-img shadow-lg" />
+</a><br />
+<div class="anim fade">
+	<slot />
+</div>
+
+<style lang="scss">
+.project-img {
+	width: 512px;
+	max-width: calc(100vw - 40px);
+	position: relative;
+	transition: scale .3s ease-out, transform .8s ease-out;
+	transform: translateX(20px);
+	opacity: 0;
+	margin: 0;
+	&:hover {
+		scale: 1.02;
+	}
+}
+.project-img.enter {
+	opacity: 1;
+	transform: translateX(0);
+}
+</style>

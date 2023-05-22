@@ -7,6 +7,7 @@ import ListSignupForm from '../components/ListSignupForm';
 import funnotesImage from '../assets/funnotes.png';
 import urlbitImage from '../assets/urlbit.png';
 import filterMovieImage from '../assets/filtermovie.png';
+import Project from '../components/Project.astro';
 ---
 
 <Layout title="Farolan Faisal">
@@ -28,38 +29,32 @@ import filterMovieImage from '../assets/filtermovie.png';
 			<div class="container container-ext">
 				<h2 class="anim fade fade-left">Projects</h2>
 
-				<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">
-					<h3 class="mb-2 anim fade">FunNotes - Customizable Note Taking App</h3>
-					<div class="tilt">
-						<img src={funnotesImage} alt="FunNotes app" class="m-0 anim project-img shadow-lg" />
-					</div>
-				</a><br />
-				<div class="anim fade">
+				<Project 
+					title="FunNotes - Customizable Note Taking App"
+					href="https://play.google.com/store/apps/details?id=dev.farol.funnotes"
+					image={funnotesImage}
+				>
 					<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
 					<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
-				</div>
+				</Project>
 
-				<a href="https://url.gbits.me/" target="_blank" rel="noopener">
-					<h3 class="mb-2 anim fade">Urlbit - Free URL Shortener</h3>
-					<div class="tilt">
-						<img src={urlbitImage} alt="Urlbit app" class="m-0 anim project-img shadow-lg" />
-					</div>
-				</a><br />
-				<div class="anim fade">
+				<Project 
+					title="Urlbit - Free URL Shortener"
+					href="https://url.gbits.me/"
+					image={urlbitImage}
+				>
 					<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
 					<a href="https://play.google.com/store/apps/details?id=me.gbits.url.twa" target="_blank" rel="noopener">Store</a>
-				</div>
+				</Project>
 
-				<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">
-					<h3 class="mb-2 anim fade">FilterMovie - Video Censoring Chrome Extension</h3>
-					<div class="tilt">
-						<img src={filterMovieImage} alt="FilterMovie app" class="m-0 anim project-img shadow-lg" />
-					</div>
-				</a><br />
-				<div class="anim fade">
+				<Project 
+					title="FilterMovie - Video Censoring Chrome Extension"
+					href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked"
+					image={filterMovieImage}
+				>
 					<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">Store</a>
-				</div>
-
+				</Project>
+	
 				<section>
 					<h2 class="font-black anim fade fade-left">Want news and updates?</h2>
 					<p class="text-2xl font-bold text-green-600 anim fade fade-right">Sign up for my newsletter.</p>
@@ -139,30 +134,10 @@ import filterMovieImage from '../assets/filtermovie.png';
 				observer.observe(target)
 			}
 
-			function hoverTilt(target: Element) {
-				const el = target as HTMLElement
-				const tilt = (tx: number, ty: number) => {
-					const deg = 20
-					const xrot = tx * deg;
-					const yrot = ty * deg;
-					el.style.transform = `rotateX(${xrot}deg) rotateY(${yrot}deg)`
-				}
-				target.addEventListener('mousemove', e => {
-					const ev = e as MouseEvent
-					const rect = el.getBoundingClientRect()
-					const cx = rect.width / 2
-					const cy = rect.height / 2
-					const tx = (ev.clientX - rect.left - cx) / cx
-					const ty = (ev.clientY - rect.top - cy) / cy
-					tilt(-ty, tx)
-				})
-			}
-
 			window.onload = () => {
 				update()
 				scrollEl.addEventListener('scroll', update)
 				Array.from(document.getElementsByClassName('anim')).forEach(setupObserver)
-				Array.from(document.getElementsByClassName('tilt')).forEach(hoverTilt)
 			}
 		})()
 	</script>
@@ -266,20 +241,6 @@ import filterMovieImage from '../assets/filtermovie.png';
 	.t-50 .name {
 		opacity: 0;
 		transform: translateY(-100px);
-	}
-
-	.project-img {
-		width: 512px;
-		max-width: calc(100vw - 40px);
-		position: relative;
-		transition: all .8s ease-out;
-		transform: translateX(20px);
-		opacity: 0;
-		margin: 0;
-	}
-	.project-img.enter {
-		opacity: 1;
-		transform: translateX(0);
 	}
 
 	.heart {
