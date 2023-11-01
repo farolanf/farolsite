@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "inline-styles": "node inline-styles.mjs"
+    "inline-styles": "node inline-styles.mjs",
+    "pages:deploy": "astro build && wrangler pages deploy ./dist"
   },
   "dependencies": {
     "astro": "^1.2.1"
