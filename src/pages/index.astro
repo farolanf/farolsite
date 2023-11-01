@@ -5,6 +5,7 @@ import githubIcon from '../assets/icons/github.svg';
 import linkedInIcon from '../assets/icons/linkedin.svg';
 import ListSignupForm from '../components/ListSignupForm';
 import funnotesImage from '../assets/funnotes.png';
+import talkImage from '../assets/talk.png';
 import urlbitImage from '../assets/urlbit.png';
 import filterMovieImage from '../assets/filtermovie.png';
 import Project from '../components/Project.astro';
@@ -28,6 +29,12 @@ import Project from '../components/Project.astro';
 		<div class="projects-c">
 			<div class="container container-ext">
 				<h2 class="anim fade fade-left">Projects</h2>
+
+				<Project 
+					title="Talk - Super Fun, Random Voice Chat"
+					href="https://talk.farol.dev"
+					image={talkImage}
+				/>
 
 				<Project 
 					title="FunNotes - Customizable Note Taking App"
