@@ -43,14 +43,20 @@ export default function ListSignupForm() {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="tags" value="12484270" />
-        <div id="mc_embed_signup_scroll">
+        <div
+          id="mc_embed_signup_scroll"
+          className="flex flex-col items-stretch md:flex-row"
+        >
           <input
             type="email"
             defaultValue=""
             name="EMAIL"
             id="mce-EMAIL"
             placeholder="Enter your email"
-            className={cn('input w-280px mr-10px', loading && 'opacity-50')}
+            className={cn(
+              'input md:w-280px md:mr-10px',
+              loading && 'opacity-50',
+            )}
             disabled={loading}
             aria-required
             required
@@ -61,7 +67,7 @@ export default function ListSignupForm() {
             name="subscribe"
             id="mc-embedded-subscribe"
             className={cn(
-              'button bg-green-600 text-white font-bold mt-10px',
+              'button bg-green-600 text-white font-bold mt-2 md:mt-0 md:ml-2',
               loading && 'bg-gray-300',
             )}
             disabled={loading}

@@ -8,6 +8,6 @@ export interface Props {
 const { title, iconSrc, href } = Astro.props;
 ---
 
-<a href={href} class="button flex items-center justify-center min-w-160px max-w-200px hover:(no-underline bg-gray-100) text-black">
-	<img src={iconSrc} class="w-30px -ml-8px mr-5px" alt="icon" loading="lazy"> {title}
+<a href={href} class="button flex items-center justify-center min-w-160px max-w-[200px] hover:no-underline hover:bg-gray-100 text-black">
+	<img src={iconSrc} class="w-[30px] -ml-[8px] mr-[5px]" alt="icon" loading="lazy"> {title}
 </a>

@@ -14,22 +14,22 @@ import '../tailwind.css'
 
 <Layout title="Farolan Faisal">
 	<main id="root" class="min-h-[calc(100vh-80px)]">
-		<div class="hey-c min-h-[100vh] flex flex-col justify-center items-center">
-			<div class="container container-ext flex flex-col justify-center items-center">
-				<p class="hey hey-1 text-4xl">Hello there!</p>
-				<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
-				<p class="hey hey-3 text-4xl">and I love making apps and websites.</p>
-				<p class="hey hey-4 text-4xl">Thanks for checking out!</p>
+		<div class="min-h-[100vh] flex flex-col justify-center items-center bg-gradient-to-b from-violet-400">
+			<div class="container container-ext flex flex-col justify-center items-start md:items-center gap-12">
+				<p class="hey hey-1 text-3xl md:text-4xl">Hi there!</p>
+				<p class="hey hey-2 text-3xl md:text-4xl">I'm a full-stack developer from Indonesia</p>
+				<p class="hey hey-3 text-3xl md:text-4xl">I create apps and websites</p>
+				<p class="hey hey-4 text-3xl md:text-4xl">Thanks for checking out!</p>
 			</div>
 		</div>
 
 		<div class="container container-ext flex flex-col justify-center items-center">
-			<p class="name text-4xl">By the way, my name is Farolan</p>
+			<p class="name text-3xl">By the way, my name is Farolan</p>
 		</div>
 
-		<div class="projects-c">
-			<div class="container container-ext">
-				<h2 class="anim fade fade-left">Projects</h2>
+		<div class="mt-20 bg-gradient-to-b from-transparent to-blue-50">
+			<div class="container container-ext flex flex-col items-start gap-14">
+				<h2 class="anim fade fade-left font-bold">Projects</h2>
 
 				<Project
 					title="Talk - Super Fun, Random Voice Chat"
@@ -63,16 +63,13 @@ import '../tailwind.css'
 					<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">Store</a>
 				</Project>
 
-				<section>
-					<h2 class="font-black anim fade fade-left">Want news and updates?</h2>
-					<p class="text-2xl font-bold text-green-600 anim fade fade-right">Sign up for my newsletter.</p>
-					<div class="anim fade fade-in">
+				<section class="self-stretch">
+					<p class="text-2xl font-bold text-green-600 anim fade fade-right leading-loose">Want news and updates?</p>
+					<div class="anim fade fade-in mt-2">
 						<ListSignupForm client:idle />
 					</div>
-				</section>
 
-				<section>
-					<ul class="list-none flex flex-row items-center mt-[50px]">
+          <ul class="list-none flex flex-row items-center mt-4">
 						<li class="md:mr-[10px]">
 							<SocialButton
 								title="GitHub"
@@ -90,8 +87,8 @@ import '../tailwind.css'
 					</ul>
 				</section>
 			</div>
-			<footer class="h-[80px] flex justify-center items-center">
-				Made by&nbsp;<a href="https://twitter.com/farolanfaisal">@farolanfaisal</a>
+			<footer class="mt-20 h-[80px] flex justify-center items-center">
+				Made by&nbsp;<a href="https://twitter.com/farolanfaisal" class="font-bold">@farolanfaisal</a>
 			</footer>
 		</div>
 	</main>
@@ -192,25 +189,20 @@ import '../tailwind.css'
 		}
 	}
 
-	.hey-c {
-		background: linear-gradient(180deg, #8b5cf6, transparent);
-	}
-	.projects-c {
-		background: linear-gradient(180deg, transparent, #e5e7eb);
-	}
 	.hey {
-		transition: all 1s ease-out .2s;
+		transition: all 1s ease-out;
+    transition-property: transform, opacity;
 		opacity: 0;
 		transform: translateY(-20px);
 
 		&.hey-2 {
-			transition-delay: 1.2s;
+			transition-delay: .2s;
 		}
 		&.hey-3 {
-			transition-delay: 2.2s;
+			transition-delay: .4s;
 		}
 		&.hey-4 {
-			transition-delay: 3.2s;
+			transition-delay: .6s;
 		}
 
 		.t-0 & {
@@ -242,7 +234,7 @@ import '../tailwind.css'
 		opacity: 0;
 		transform: translateY(-100px);
 	}
-	.t-25 .name {
+	.t-15 .name {
 		opacity: 1;
 		transform: translateY(-70px);
 	}
