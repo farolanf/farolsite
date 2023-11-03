@@ -1,13 +1,18 @@
-import { defineConfig } from 'astro/config';
-import { VitePWA } from 'vite-plugin-pwa';
-import WindiCss from 'vite-plugin-windicss';
-import solidJs from "@astrojs/solid-js";
+import {defineConfig} from 'astro/config'
+import {VitePWA} from 'vite-plugin-pwa'
+import tailwind from '@astrojs/tailwind'
+import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  integrations: [solidJs()],
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyle: false,
+    }),
+  ],
   vite: {
-    plugins: [VitePWA(), WindiCss()],
+    plugins: [VitePWA()],
   },
-});
+})

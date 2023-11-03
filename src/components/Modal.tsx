@@ -1,34 +1,32 @@
-import type { JSX, ParentComponent } from 'solid-js'
+import type {ReactNode} from 'react'
 
 interface ModalProps {
-  id?: string,
-  visible?: boolean,
-  setVisible?: (visible: boolean) => void,
-  children?: JSX.Element,
+  id?: string
+  visible?: boolean
+  setVisible?: (visible: boolean) => void
+  children?: ReactNode
 }
 
-const Modal: ParentComponent<ModalProps> = (props: ModalProps) => {
+export default function Modal(props: ModalProps) {
   const handleClickClose = () => {
     props.setVisible?.(false)
   }
 
   return (
-    <div class={props.visible ? 'block' : 'hidden'}>
-      <div class="fixed inset-0"></div>
-      <section 
-        id={props.id} 
-        class={`min-w-360px bg-white shadow-2xl p-60px absolute center`}
+    <div className={props.visible ? 'block' : 'hidden'}>
+      <div className="fixed inset-0"></div>
+      <section
+        id={props.id}
+        className="min-w-[360px] bg-white shadow-2xl p-[60px] absolute center"
       >
         {props.children}
-        <span 
-          class="absolute top-5px right-7px p-5px leading-15px text-lg cursor-pointer"
+        <span
+          className="absolute top-[5px] right-[7px] p-[5px] leading-[15px] text-lg cursor-pointer"
           onClick={handleClickClose}
         >
-            &times;
+          &times;
         </span>
       </section>
     </div>
   )
 }
-
-export default Modal

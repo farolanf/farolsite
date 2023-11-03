@@ -3,15 +3,7 @@ export interface Props {
 	title: string;
 }
 
-import 'virtual:windi.css'
-import Typography from 'typography'
-import typographyTheme from 'typography-theme-sutro'
-
 const { title } = Astro.props;
-
-// fix theme import difference between dev and prod
-const typography = new Typography(typographyTheme?.default || typographyTheme)
-const typographyStyles = typography.toString()
 ---
 
 <!DOCTYPE html>
@@ -22,7 +14,6 @@ const typographyStyles = typography.toString()
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<style set:html={typographyStyles}></style>
 	</head>
 	<body class="m-0 min-h-100vh">
 		<slot />

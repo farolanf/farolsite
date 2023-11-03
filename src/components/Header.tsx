@@ -1,9 +1,7 @@
-import type { ParentComponent } from 'solid-js'
+import type {PropsWithChildren} from 'react'
 
-const Header: ParentComponent = (props) => {
-  return (
-    <header>{props.children}</header>
-  )
+type HeaderProps = PropsWithChildren
+
+export default function Header(props: HeaderProps) {
+  return <header>{props.children}</header>
 }
-
-export default Header

@@ -9,11 +9,12 @@ import talkImage from '../assets/talk.png';
 import urlbitImage from '../assets/urlbit.png';
 import filterMovieImage from '../assets/filtermovie.png';
 import Project from '../components/Project.astro';
+import '../tailwind.css'
 ---
 
 <Layout title="Farolan Faisal">
 	<main id="root" class="min-h-[calc(100vh-80px)]">
-		<div class="hey-c min-h-100vh flex flex-col justify-center items-center">
+		<div class="hey-c min-h-[100vh] flex flex-col justify-center items-center">
 			<div class="container container-ext flex flex-col justify-center items-center">
 				<p class="hey hey-1 text-4xl">Hello there!</p>
 				<p class="hey hey-2 text-4xl">I'm a full-stack developer from Indonesia</p>
@@ -30,38 +31,38 @@ import Project from '../components/Project.astro';
 			<div class="container container-ext">
 				<h2 class="anim fade fade-left">Projects</h2>
 
-				<Project 
+				<Project
 					title="Talk - Super Fun, Random Voice Chat"
 					href="https://talk.farol.dev"
-					image={talkImage}
+					image={talkImage.src}
 				/>
 
-				<Project 
+				<Project
 					title="FunNotes - Customizable Note Taking App"
 					href="https://play.google.com/store/apps/details?id=dev.farol.funnotes"
-					image={funnotesImage}
+					image={funnotesImage.src}
 				>
-					<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> | 
+					<a href="https://www.youtube.com/shorts/BdgugaiyBRc" target="_blank" rel="noopener">Video</a> |
 					<a href="https://play.google.com/store/apps/details?id=dev.farol.funnotes" target="_blank" rel="noopener">Store</a>
 				</Project>
 
-				<Project 
+				<Project
 					title="Urlbit - Free URL Shortener"
 					href="https://url.gbits.me/"
-					image={urlbitImage}
+					image={urlbitImage.src}
 				>
-					<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> | 
+					<a href="https://rapidapi.com/farolan/api/url-shortener23" target="_blank" rel="noopener">Free URL Shortener API</a> |
 					<a href="https://play.google.com/store/apps/details?id=me.gbits.url.twa" target="_blank" rel="noopener">Store</a>
 				</Project>
 
-				<Project 
+				<Project
 					title="FilterMovie - Video Censoring Chrome Extension"
 					href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked"
-					image={filterMovieImage}
+					image={filterMovieImage.src}
 				>
 					<a href="https://chrome.google.com/webstore/detail/filter-movie/eokdhiopcphhcpjadjcgcjjbkbhccked" target="_blank" rel="noopener">Store</a>
 				</Project>
-	
+
 				<section>
 					<h2 class="font-black anim fade fade-left">Want news and updates?</h2>
 					<p class="text-2xl font-bold text-green-600 anim fade fade-right">Sign up for my newsletter.</p>
@@ -71,25 +72,25 @@ import Project from '../components/Project.astro';
 				</section>
 
 				<section>
-					<ul class="list-none flex flex-row items-center mt-50px">
-						<li class="md:mr-10px">
+					<ul class="list-none flex flex-row items-center mt-[50px]">
+						<li class="md:mr-[10px]">
 							<SocialButton
 								title="GitHub"
-								iconSrc={githubIcon}
+								iconSrc={githubIcon.src}
 								href="https://github.com/farolanf"
 							/>
 						</li>
-						<li class="md:mr-10px">
+						<li class="md:mr-[10px]">
 							<SocialButton
 								title="LinkedIn"
-								iconSrc={linkedInIcon}
+								iconSrc={linkedInIcon.src}
 								href="https://www.linkedin.com/in/farolanfaisal"
 							/>
 						</li>
 					</ul>
 				</section>
 			</div>
-			<footer class="h-80px flex justify-center items-center">
+			<footer class="h-[80px] flex justify-center items-center">
 				Made by&nbsp;<a href="https://twitter.com/farolanfaisal">@farolanfaisal</a>
 			</footer>
 		</div>
@@ -158,7 +159,7 @@ import Project from '../components/Project.astro';
 		height: 100vh;
 		overflow: auto;
 	}
-	
+
 	.fade {
 		transition: all 1s ease-out 0s;
 		opacity: 0;
@@ -192,7 +193,7 @@ import Project from '../components/Project.astro';
 	}
 
 	.hey-c {
-		background: linear-gradient(180deg, #a7f3d0, transparent);
+		background: linear-gradient(180deg, #8b5cf6, transparent);
 	}
 	.projects-c {
 		background: linear-gradient(180deg, transparent, #e5e7eb);
@@ -201,7 +202,7 @@ import Project from '../components/Project.astro';
 		transition: all 1s ease-out .2s;
 		opacity: 0;
 		transform: translateY(-20px);
-		
+
 		&.hey-2 {
 			transition-delay: 1.2s;
 		}
