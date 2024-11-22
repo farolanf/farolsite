@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "inline-styles": "node inline-styles.mjs",
-    "pages:deploy": "astro build && wrangler pages deploy ./dist"
+    "deploy": "astro build && firebase deploy"
   },
   "dependencies": {
     "@astrojs/react": "^3.0.4",
